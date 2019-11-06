@@ -105,6 +105,7 @@
 #include "Core/WindowBuilder.h"
 #include "Core/GlobalManager.h"
 #include "Core/Window.h"
+#include "Core/Watermark.h"
 #include "Core/Placeholder.h"
 #include "Core/Control.h"
 #include "Core/Box.h"

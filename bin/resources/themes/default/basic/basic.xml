@@ -10,7 +10,7 @@
       </Box>
       <Button class="btn_wnd_close" name="closebtn" margin="4,6,8,0"/>
     </HBox>
-    <Box>
+    <Box name="watermark">
       <VBox margin="0,0,0,0" valign="center" halign="center" width="auto" height="auto">
         <Label name="tooltip" text="一个简单窗口，带有标题栏和常规按钮。"/>
       </VBox>

@@ -58,8 +58,9 @@
     <TextColor name="bk_menuitem_selected" value="#ffced4db"/>
     <TextColor name="bk_listitem_hovered" value="#fff0f2f5"/>
     <TextColor name="bk_listitem_selected" value="#ffe4e7eb"/>
-
-    <!--置顶项的背景颜色-->
+    <TextColor name="watermark_color" value="#ffe0e0e0"/>
+  
+  <!--置顶项的背景颜色-->
     <TextColor name="bk_topitem_normal" value="#ffffffe0"/>
     <TextColor name="bk_topitem_hovered" value="#ffffffeb"/>
     <TextColor name="bk_topitem_selected" value="#fffafacd"/>

@@ -17,7 +17,7 @@ public:
 	}
 };
 
-class UILIB_API Control : public PlaceHolder
+class UILIB_API Control : public PlaceHolder, public Watermark
 {
 	typedef std::map<int, CEventSource> GifEventMap;
 public:
@@ -854,6 +854,8 @@ public:
 	 */
 	void DetachEvent(EventType type);
 
+	//水印
+	virtual void OnWatermarkChange();
 protected:
 	friend WindowBuilder;
 	void AttachXmlEvent(EventType eventType, const EventCallback& callback) { OnXmlEvent[eventType] += callback; }
@@ -872,6 +874,7 @@ protected:
 	/// 绘制相关保护成员函数，不允许外部直接调用
 	virtual void PaintBkColor(IRenderContext* pRender);
 	virtual void PaintBkImage(IRenderContext* pRender);
+	virtual void AfterPaintBK(IRenderContext* pRender);
 	virtual void PaintStatusColor(IRenderContext* pRender);
 	virtual void PaintStatusImage(IRenderContext* pRender);
 	virtual void PaintText(IRenderContext* pRender);

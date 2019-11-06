@@ -29,7 +29,16 @@ std::wstring BasicForm::GetWindowClassName() const
 
 void BasicForm::InitWindow()
 {
+	ui::Box* control_box = static_cast<ui::Box*>(FindControl(L"watermark"));
+	control_box->SetWatermarkType(1);
 
+	ui::IWatermark info;
+	info.m_strText = L"111111111";
+	info.m_strColor = L"watermark_color";
+	info.m_bUseWatermark = true;
+	info.m_sFontId = L"system_12";
+	info.m_nVStep = 75;
+	control_box->SetWatermarkInfo(info);
 }
 
 LRESULT BasicForm::OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)

@@ -1378,6 +1378,7 @@ void Control::Paint(IRenderContext* pRender, const UiRect& rcPaint)
 
 	PaintBkColor(pRender);
 	PaintBkImage(pRender);
+	AfterPaintBK(pRender);
 	PaintStatusColor(pRender);
 	PaintStatusImage(pRender);
 	PaintText(pRender);
@@ -1400,6 +1401,15 @@ void Control::PaintBkColor(IRenderContext* pRender)
 void Control::PaintBkImage(IRenderContext* pRender)
 {
     DrawImage(pRender, m_bkImage);
+}
+
+void Control::AfterPaintBK(IRenderContext* pRender)
+{
+	if (GetUseWatermark())
+	{
+		ui::UiRect rcDraw = m_rcItem;
+		PaintWatermark(pRender, rcDraw);
+	}
 }
 
 void Control::PaintStatusColor(IRenderContext* pRender)
@@ -1688,6 +1698,11 @@ void Control::DetachEvent(EventType type)
 	{
 		OnEvent.erase(event);
 	}
+}
+
+void Control::OnWatermarkChange()
+{
+	Invalidate();
 }
 
 } // namespace ui
