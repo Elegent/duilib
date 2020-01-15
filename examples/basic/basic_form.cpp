@@ -36,7 +36,7 @@ void BasicForm::InitWindow()
 	info.m_strText = L"111111111";
 	info.m_strColor = L"watermark_color";
 	info.m_bUseWatermark = true;
-	info.m_sFontId = L"system_12";
+	info.m_sFontId = L"system_water_12";
 	info.m_nVStep = 75;
 	control_box->SetWatermarkInfo(info);
 }

@@ -200,6 +200,8 @@ Box* WindowBuilder::Create(CreateControlCallback pCallback, Window* pManager, Bo
 					bool underline = false;
 					bool italic = false;
 					bool isDefault = false;
+					int  escapement = 0;
+					int  orientation = 0;
 					for( int i = 0; i < nAttributes; i++ ) {
 						strName = node.GetAttributeName(i);
 						strValue = node.GetAttributeValue(i);
@@ -225,9 +227,15 @@ Box* WindowBuilder::Create(CreateControlCallback pCallback, Window* pManager, Bo
 						else if( strName == _T("default") ) {
 							isDefault = (strValue == _T("true"));
 						}
+						else if (strName == _T("escapement")) {
+							escapement = _tcstol(strValue.c_str(), &pstr, 10);
+						}
+						else if (strName == _T("orientation")) {
+							orientation = _tcstol(strValue.c_str(), &pstr, 10);
+						}
 					}
 					if( !strFontName.empty() ) {
-						GlobalManager::AddFont(strFontId, strFontName, size, bold, underline, italic, isDefault);
+						GlobalManager::AddFont(strFontId, strFontName, size, bold, underline, italic, isDefault, escapement, orientation);
 					}
 				}
 				else if( strClass == _T("Class") ) {

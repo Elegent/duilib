@@ -31,7 +31,8 @@
     <Font id="system_underline_18" name="system" size="18" underline="true"/>
     <Font id="system_underline_20" name="system" size="20" underline="true"/>
     <Font id="system_underline_22" name="system" size="22" underline="true"/>
-
+	<!--水印-->
+    <Font id="system_water_12" name="system" size="22" escapement="30" />
     <!--一些常规固定颜色-->
     <TextColor name="white" value="#ffffffff"/>
     <TextColor name="black" value="#ff000000"/>

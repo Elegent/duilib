@@ -295,8 +295,15 @@ void GlobalManager::RemoveAllImages()
 	m_mImageHash.clear();
 }
 
-HFONT GlobalManager::AddFont(const std::wstring& strFontId, const std::wstring& strFontName, int nSize, bool bBold, bool bUnderline, bool bItalic, bool bDefault)
+HFONT GlobalManager::AddFont(const std::wstring& strFontId, const std::wstring& strFontName, int nSize, bool bBold, bool bUnderline, bool bItalic, bool bDefault, int nEscapement, int nOrientation)
 {
+	if (nEscapement != 0)
+	{
+		if (nOrientation == 0)	nOrientation = 90;
+		nEscapement = nEscapement % 81;
+		if (nEscapement < 10) nEscapement = 10;/*倾斜角度[10,80] 区间内*/
+	}
+
 	std::wstring strNewFontId = strFontId;
 	if (strNewFontId.empty())
 	{
@@ -320,6 +327,8 @@ HFONT GlobalManager::AddFont(const std::wstring& strFontId, const std::wstring& 
 	if (bBold) lf.lfWeight += FW_BOLD;
 	if (bUnderline) lf.lfUnderline = TRUE;
 	if (bItalic) lf.lfItalic = TRUE;
+	lf.lfEscapement = nEscapement * 10;
+	lf.lfOrientation = nOrientation;
 	HFONT hFont = ::CreateFontIndirect(&lf);
 	if (hFont == NULL) return NULL;
 
